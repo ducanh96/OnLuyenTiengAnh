@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace aspnetcore_rest_api_with_dapper.Middlewares
+namespace PracticeEnglish.Middlewares
 {
     public class GlobalExceptionMiddleware
     {

@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using aspnetcore_rest_api_with_dapper.Contracts;
-using aspnetcore_rest_api_with_dapper.Models;
+using PracticeEnglish.Contracts.Response;
+using PracticeEnglish.Contracts.Request;
+using PracticeEnglish.Models;
 
-namespace aspnetcore_rest_api_with_dapper.Business
+namespace PracticeEnglish.Business.Interface
 {
     public interface ICategoryBusiness
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using aspnetcore_rest_api_with_dapper.Models;
+using PracticeEnglish.Models;
 
-namespace aspnetcore_rest_api_with_dapper.Data
+namespace PracticeEnglish.Data.Interface
 {
     public interface IProductRepository
     {

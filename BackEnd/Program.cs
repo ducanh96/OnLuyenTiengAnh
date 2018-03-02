@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
-namespace aspnetcore_rest_api_with_dapper
+namespace PracticeEnglish
 {
     public class Program
     {

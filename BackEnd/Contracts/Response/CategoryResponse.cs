@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using aspnetcore_rest_api_with_dapper.Models;
+using PracticeEnglish.Models;
 using Newtonsoft.Json;
 
-namespace aspnetcore_rest_api_with_dapper.Contracts
+namespace PracticeEnglish.Contracts.Response
 {
     public class CategoryResponse
     {

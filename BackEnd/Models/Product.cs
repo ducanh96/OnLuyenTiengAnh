@@ -1,6 +1,6 @@
 using System;
 
-namespace aspnetcore_rest_api_with_dapper.Models
+namespace PracticeEnglish.Models
 {
     public class Product
     {
