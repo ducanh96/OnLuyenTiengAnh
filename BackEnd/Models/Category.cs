@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace aspnetcore_rest_api_with_dapper.Models
+namespace PracticeEnglish.Models
 {
     public class Category
     {

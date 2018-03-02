@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using aspnetcore_rest_api_with_dapper.Business;
-using aspnetcore_rest_api_with_dapper.Data;
-using aspnetcore_rest_api_with_dapper.Middlewares;
-using aspnetcore_rest_api_with_dapper.Models;
+using PracticeEnglish.Business;
+using PracticeEnglish.Data;
+using PracticeEnglish.Middlewares;
+using PracticeEnglish.Models;
 using aspnetcoregraphql.Models;
 using GraphQL;
 using GraphQL.Types;
@@ -15,8 +15,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
+using PracticeEnglish.Business.Interface;
+using PracticeEnglish.Data.Interface;
+using PracticeEnglish.Data.Implement;
+using PracticeEnglish.Business.Implement;
 
-namespace aspnetcore_rest_api_with_dapper
+namespace PracticeEnglish
 {
     public class Startup
     {
@@ -43,6 +47,9 @@ namespace aspnetcore_rest_api_with_dapper
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategoryBusiness, CategoryBusiness>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IDeThiRepository, DeThiRepository>();
+            services.AddTransient<IDeThiBusiness, DeThiBussiness>();
+            
 
             services.AddScoped<EasyStoreQuery>();
             services.AddScoped<IDocumentExecuter, DocumentExecuter>();

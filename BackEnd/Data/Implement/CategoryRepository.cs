@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
-using aspnetcore_rest_api_with_dapper.Models;
+using PracticeEnglish.Models;
 using Dapper;
+using PracticeEnglish.Data.Interface;
 
-namespace aspnetcore_rest_api_with_dapper.Data
+namespace PracticeEnglish.Data.Implement
 {
     public class CategoryRepository : ICategoryRepository
     {

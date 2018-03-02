@@ -1,8 +1,9 @@
 using System;
-using aspnetcore_rest_api_with_dapper.Data;
+using PracticeEnglish.Data;
 using GraphQL.Types;
+using PracticeEnglish.Data.Interface;
 
-namespace aspnetcore_rest_api_with_dapper.Models
+namespace PracticeEnglish.Models
 {
     public class EasyStoreQuery : ObjectGraphType
     {

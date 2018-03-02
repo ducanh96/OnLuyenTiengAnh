@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using aspnetcore_rest_api_with_dapper.Contracts;
-using aspnetcore_rest_api_with_dapper.Data;
-using aspnetcore_rest_api_with_dapper.Models;
+using PracticeEnglish.Contracts.Response;
+using PracticeEnglish.Contracts.Request;
+using PracticeEnglish.Data;
+using PracticeEnglish.Models;
+using PracticeEnglish.Data.Interface;
+using PracticeEnglish.Business.Interface;
 
-namespace aspnetcore_rest_api_with_dapper.Business
+namespace PracticeEnglish.Business.Implement
 {
     public class CategoryBusiness : ICategoryBusiness
     {
@@ -51,5 +54,7 @@ namespace aspnetcore_rest_api_with_dapper.Business
             return categoryResponse;
 
         }
+
+       
     }
 }

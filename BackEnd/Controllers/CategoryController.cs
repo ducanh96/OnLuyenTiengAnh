@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using aspnetcore_rest_api_with_dapper.Business;
-using aspnetcore_rest_api_with_dapper.Contracts;
-using aspnetcore_rest_api_with_dapper.Data;
-using aspnetcore_rest_api_with_dapper.Models;
+using PracticeEnglish.Business;
+using PracticeEnglish.Contracts.Response;
+using PracticeEnglish.Data;
+using PracticeEnglish.Models;
 using Microsoft.AspNetCore.Mvc;
+using PracticeEnglish.Business.Interface;
 
-namespace aspnetcore_rest_api_with_dapper.Controllers
+namespace PracticeEnglish.Controllers
 {
     [Route("api/v1/[controller]")]
     public class CategoryController : Controller
