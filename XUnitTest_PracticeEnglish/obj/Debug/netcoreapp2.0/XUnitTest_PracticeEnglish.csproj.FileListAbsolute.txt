@@ -1,0 +1,14 @@
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netcoreapp10.dll
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\bin\Debug\netcoreapp2.0\xunit.runner.utility.netcoreapp10.dll
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\bin\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.deps.json
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\bin\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.runtimeconfig.json
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\bin\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.runtimeconfig.dev.json
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\bin\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.dll
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\bin\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.pdb
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\obj\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.csprojResolveAssemblyReference.cache
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\obj\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.csproj.CoreCompileInputs.cache
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\obj\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.AssemblyInfoInputs.cache
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\obj\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.AssemblyInfo.cs
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\obj\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.dll
+F:\aspnetcore-rest-api-with-dapper-master\XUnitTest_PracticeEnglish\obj\Debug\netcoreapp2.0\XUnitTest_PracticeEnglish.pdb
