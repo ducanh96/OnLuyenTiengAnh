@@ -24,6 +24,7 @@ import {
   UserService,
   HttpTokenInterceptor
 } from './shared';
+import { DethiComponent } from './dethi/dethi.component';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
@@ -31,7 +32,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    DethiComponent
   ],
   imports: [
     BrowserModule,
