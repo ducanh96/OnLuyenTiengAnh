@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PracticeEnglish.Models;
 using Dapper;
 using PracticeEnglish.Data.Interface;
+using PracticeEnglish;
 
 namespace PracticeEnglish.Data.Implement
 {
@@ -17,7 +18,7 @@ namespace PracticeEnglish.Data.Implement
         public DeThiRepository()
         {
             // TODO: It will be refactored...
-            _connectionString = "Server=DESKTOP-ET1GGIC\\SQLEXPRESS;Database=B1Online;Trusted_Connection=True;MultipleActiveResultSets=true";
+            _connectionString = ConfigSetting._connectionString;
         }
 
         public async Task<IEnumerable<DeThi>> GetListDeThi_ChuDe(int id)

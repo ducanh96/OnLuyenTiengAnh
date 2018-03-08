@@ -15,7 +15,7 @@ namespace PracticeEnglish.Data.Implement
         public CategoryRepository()
         {
             // TODO: It will be refactored...
-            _connectionString = "Server=DESKTOP-ET1GGIC\\SQLEXPRESS;Database=RESTfulSampleDb;Trusted_Connection=True;MultipleActiveResultSets=true";
+            _connectionString = "Server=DESKTOP-HS87TDC\\SQLEXPRESS;Database=RESTfulSampleDb;Trusted_Connection=True;MultipleActiveResultSets=true";
         }
         public async Task<IEnumerable<Category>> GetAllAsync()
         {
