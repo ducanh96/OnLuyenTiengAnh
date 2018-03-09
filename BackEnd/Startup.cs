@@ -43,8 +43,10 @@ namespace PracticeEnglish
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IChuDeRepository, ChuDeRepository>();
             services.AddTransient<IDeThiRepository, DeThiRepository>();
+            services.AddTransient<ICauHoiRepository, CauHoiRepository>();
             services.AddTransient<IDeThiBusiness, DeThiBussiness>();
             services.AddTransient<IChuDeBusiness, ChuDeBusiness>();
+            services.AddTransient<ICauHoiBusiness, CauHoiBusiness>();
             
             
 

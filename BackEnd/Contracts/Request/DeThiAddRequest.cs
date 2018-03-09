@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using PracticeEnglish.Models;
 
 namespace PracticeEnglish.Contracts.Request
 {
-    public class XoaCauHoiRequest
+    public class DeThiAddRequest
     {
-        public int ID { get; set; }
+       public DeThi deThi { get; set; }
     }
 }
