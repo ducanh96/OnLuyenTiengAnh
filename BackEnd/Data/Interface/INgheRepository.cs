@@ -8,8 +8,11 @@ namespace PracticeEnglish.Data.Interface
     public interface INgheRepository
     {
         Task<IEnumerable<Nghe>> LayDSFileNghe(int idChuDe);
-        Task<int> ThemFileNghe(Nghe nghe);
-        Task<int> SuaFileNghe(Nghe nghe);
-        Task<bool> XoaFileNghe(int id);
+        //Task<int> ThemFileNghe(Nghe nghe);
+        //Task<int> SuaFileNghe(Nghe nghe);
+        //Task<bool> XoaFileNghe(int id);
+        //Task<IEnumerable<Nghe>> GetListNghe_KhongThuocDeThi(int idChuDe);
+
+
     }
 }

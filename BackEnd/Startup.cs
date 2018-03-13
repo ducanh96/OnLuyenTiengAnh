@@ -47,6 +47,8 @@ namespace PracticeEnglish
             services.AddTransient<IDeThiBusiness, DeThiBussiness>();
             services.AddTransient<IChuDeBusiness, ChuDeBusiness>();
             services.AddTransient<ICauHoiBusiness, CauHoiBusiness>();
+            services.AddTransient<INgheBusiness, NgheBusiness>();
+            services.AddTransient<INgheRepository, NgheRepository>();
             
             
 

@@ -9,6 +9,7 @@ using PracticeEnglish.Models;
 using Microsoft.AspNetCore.Mvc;
 using PracticeEnglish.Business.Interface;
 using PracticeEnglish.Contracts.Request;
+using PracticeEnglish.Entity;
 
 namespace PracticeEnglish.Controllers
 {
@@ -16,10 +17,12 @@ namespace PracticeEnglish.Controllers
     public class CauHoiController : Controller
     {
         private readonly ICauHoiBusiness _cauHoiBusiness;
+        private readonly INgheBusiness _ngheBusiness;
 
-        public CauHoiController(ICauHoiBusiness cauHoiBusiness)
+        public CauHoiController(ICauHoiBusiness cauHoiBusiness,INgheBusiness ngheBusiness)
         {
             _cauHoiBusiness = cauHoiBusiness;
+            _ngheBusiness = ngheBusiness;
         }
 
         // GET api/v1/category/{id}
@@ -29,8 +32,14 @@ namespace PracticeEnglish.Controllers
             return await _cauHoiBusiness.GetListCauHoi_KhongThuocDeThi(request);
         }
 
-      
 
-        
+        [HttpGet("Nghe/{idTopic}")]
+        public async Task<IEnumerable<NgheEntity>> GetDSNghe_CauHoi(int idTopic)
+        {
+            return await _ngheBusiness.GetDSNghe_CauHoi(idTopic);
+        }
+
+
+
     }
 }

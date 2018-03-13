@@ -142,5 +142,26 @@ namespace PracticeEnglish.Data.Implement
                return listCauHoi;
             }
         }
+
+        public async Task<IEnumerable<CauHoi>> GetListCauHoi_IDNghe(int idNghe)
+        {
+            using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"SELECT [ID]
+                                ,[TieuDe]
+                                ,[PhuongAnA]
+                                ,[PhuongAnB]
+                                ,[PhuongAnC]
+                                ,[PhuongAnD]
+                                ,[DapAn]
+                                ,[IDNghe]
+                                ,[IDDoc]
+                                ,[IDDeThi]
+                                ,[IDChuDe] FROM [dbo].[CauHoi] WHERE [IDNghe] = @IdNghe";
+
+                var listCauHoi = await dbConnection.QueryAsync<CauHoi>(query, new { @IdNghe = idNghe });
+                return listCauHoi;
+            }
+        }
     }
 }
