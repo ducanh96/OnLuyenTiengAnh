@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using PracticeEnglish.Contracts.Request;
 using PracticeEnglish.Models;
 
 namespace PracticeEnglish.Data.Interface
 {
     public interface ICauHoiRepository
     {
-        Task<IEnumerable<CauHoi>> GetListCauHoi(int idChuDe);
-        Task<int> ThemCauHoi(CauHoi cauhoi);
-        Task<int> SuaCauHoi(CauHoi cauhoi);
-        Task<bool> XoaCauHoi(int id);
-        Task<bool> XoaCauHoiByIdDoc(int idDoc);
-        Task<bool> XoaCauHoiByIdNghe(int idNghe);
+        Task<IEnumerable<CauHoi>> GetListCauHoi(GetListCauHoiRequest r);
+        Task<int> ThemCauHoi(ThemCauHoiRequest r);
+        Task<int> SuaCauHoi(SuaCauHoiRequest r);
+        Task<bool> XoaCauHoi(XoaCauHoiRequest r);
+        Task<bool> XoaCauHoiByIdDoc(XoaCauHoiByIDDocRequest r);
+        Task<bool> XoaCauHoiByIdNghe(XoaCauHoiByIDNgheRequest r);
     }
 }

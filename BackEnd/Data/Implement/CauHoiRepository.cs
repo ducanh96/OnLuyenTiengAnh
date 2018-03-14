@@ -22,20 +22,20 @@ namespace PracticeEnglish.Data.Implement
             _connectionString = ConfigSetting._connectionString;
         }
 
-        public async Task<IEnumerable<DeThi>> GetListDeThi_ChuDe(GetListCauHoiRequest r)
-        {
+        // public async Task<IEnumerable<DeThi>> GetListDeThi_ChuDe(GetListCauHoiRequest r)
+        // {
 
-            using (IDbConnection dbConnection = _connection)
-            {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@IdTopic", r.idTopic ,DbType.Int16);
-                var listDeThi = await dbConnection.QueryAsync<DeThi>(Constants.DeThi_GetListByTopic, param: parameters,
-         commandType: CommandType.StoredProcedure);
+        //     using (IDbConnection dbConnection = _connection)
+        //     {
+        //         DynamicParameters parameters = new DynamicParameters();
+        //         parameters.Add("@IdTopic", r.idTopic ,DbType.Int16);
+        //         var listDeThi = await dbConnection.QueryAsync<DeThi>(Constants.DeThi_GetListByTopic, param: parameters,
+        //  commandType: CommandType.StoredProcedure);
 
-                return listDeThi;
+        //         return listDeThi;
 
-            }
-        }
+        //     }
+        // }
 
         public async Task<IEnumerable<CauHoi>> GetListCauHoi(GetListCauHoiRequest r)
         {
