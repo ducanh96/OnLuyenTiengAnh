@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +8,9 @@ using PracticeEnglish.Models;
 using Dapper;
 using PracticeEnglish.Data.Interface;
 using PracticeEnglish;
+
 using PracticeEnglish.Contracts.Request;
+
 
 namespace PracticeEnglish.Data.Implement
 {
@@ -21,6 +24,7 @@ namespace PracticeEnglish.Data.Implement
             // TODO: It will be refactored...
             _connectionString = ConfigSetting._connectionString;
         }
+
 
         public async Task<IEnumerable<Nghe>> LayDSFileNghe(GetListFileNgheRequest r)
         {
@@ -70,3 +74,9 @@ namespace PracticeEnglish.Data.Implement
         }
     }
 }
+
+
+
+
+
+

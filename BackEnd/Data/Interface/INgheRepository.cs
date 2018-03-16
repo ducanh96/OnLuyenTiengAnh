@@ -12,5 +12,10 @@ namespace PracticeEnglish.Data.Interface
         Task<int> ThemFileNghe(ThemFileNgheRequest r);
         Task<int> SuaFileNghe(SuaFileNgheRequest r);
         Task<bool> XoaFileNghe(XoaFileNgheRequest r);
+       // Task<IEnumerable<Nghe>> LayDSFileNghe(int idChuDe);
+        //Task<int> ThemFileNghe(Nghe nghe);
+        //Task<int> SuaFileNghe(Nghe nghe);
+        //Task<bool> XoaFileNghe(int id);
+        //Task<IEnumerable<Nghe>> GetListNghe_KhongThuocDeThi(int idChuDe);
     }
 }

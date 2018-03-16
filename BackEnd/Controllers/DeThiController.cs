@@ -29,8 +29,26 @@ namespace PracticeEnglish.Controllers
             return await _deThiBusiness.GetListDeThi_ChuDe(request);
         }
 
+        
+        [ProducesResponseType(201)]
+        [HttpPost]
+        public async Task<DeThiAddResponse> AddDeThi([FromBody]DeThiAddRequest deThi)
+        {
+            return await _deThiBusiness.Add(deThi);
+        }
       
+        [HttpGet("GetLastId")]
+         public async Task<int> GetLastId([FromQuery]string table)
+        {
+            return await _deThiBusiness.GetLastId(table);
+        }
 
+        [ProducesResponseType(201)]
+        [HttpPut("UpdateCauHoi")]
+        public async Task<DeThiAddResponse> UpdateCauHoi_DeThi([FromBody]UpdateCauHoi_DeThiRequest request)
+        {
+            return await _deThiBusiness.UpdateCauHoi_DeThi(request);
+        }
         
     }
 }

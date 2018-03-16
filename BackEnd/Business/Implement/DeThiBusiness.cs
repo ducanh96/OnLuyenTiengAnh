@@ -33,6 +33,19 @@ namespace PracticeEnglish.Business.Implement
             return response;
         }
 
-       
+        public async Task<DeThiAddResponse> Add(DeThiAddRequest deThiRequest)
+        {
+           return await _deThiRepository.Add(deThiRequest.deThi);
+        }
+
+        public async Task<int> GetLastId(string table)
+        {
+           return await _deThiRepository.GetLastId(table);
+        }
+
+        public async Task<DeThiAddResponse> UpdateCauHoi_DeThi(UpdateCauHoi_DeThiRequest request)
+        {
+            return await _deThiRepository.UpdateCauHoi_DeThi(request.IDCauHoi,request.IDDeThi);
+        }
     }
 }

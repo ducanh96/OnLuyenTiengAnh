@@ -121,5 +121,47 @@ namespace PracticeEnglish.Data.Implement
                 return  (listCauHoi>0 ? true: false )  ;
             }
         }
+
+        public async Task<IEnumerable<CauHoi>> GetListCauHoi_KhongThuocDeThi(int idTopic)
+        {
+            using (IDbConnection dbConnection = _connection)
+            {
+               string query = @"SELECT [ID]
+                                ,[TieuDe]
+                                ,[PhuongAnA]
+                                ,[PhuongAnB]
+                                ,[PhuongAnC]
+                                ,[PhuongAnD]
+                                ,[DapAn]
+                                ,[IDNghe]
+                                ,[IDDoc]
+                                ,[IDDeThi]
+                                ,[IDChuDe] FROM [dbo].[CauHoi] WHERE [IDChuDe] = @Id And [IDDeThi] is NULL";
+
+               var listCauHoi = await dbConnection.QueryAsync<CauHoi>(query,new{ @Id = idTopic});
+               return listCauHoi;
+            }
+        }
+
+        public async Task<IEnumerable<CauHoi>> GetListCauHoi_IDNghe(int idNghe)
+        {
+            using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"SELECT [ID]
+                                ,[TieuDe]
+                                ,[PhuongAnA]
+                                ,[PhuongAnB]
+                                ,[PhuongAnC]
+                                ,[PhuongAnD]
+                                ,[DapAn]
+                                ,[IDNghe]
+                                ,[IDDoc]
+                                ,[IDDeThi]
+                                ,[IDChuDe] FROM [dbo].[CauHoi] WHERE [IDNghe] = @IdNghe";
+
+                var listCauHoi = await dbConnection.QueryAsync<CauHoi>(query, new { @IdNghe = idNghe });
+                return listCauHoi;
+            }
+        }
     }
 }

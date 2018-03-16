@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PracticeEnglish.Business;
-using PracticeEnglish.Data;
-using PracticeEnglish.Middlewares;
+﻿using PracticeEnglish.Middlewares;
 using PracticeEnglish.Models;
 using aspnetcoregraphql.Models;
 using GraphQL;
@@ -47,8 +41,15 @@ namespace PracticeEnglish
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategoryBusiness, CategoryBusiness>();
             services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<IChuDeRepository, ChuDeRepository>();
             services.AddTransient<IDeThiRepository, DeThiRepository>();
+            services.AddTransient<ICauHoiRepository, CauHoiRepository>();
             services.AddTransient<IDeThiBusiness, DeThiBussiness>();
+            services.AddTransient<IChuDeBusiness, ChuDeBusiness>();
+            services.AddTransient<ICauHoiBusiness, CauHoiBusiness>();
+            services.AddTransient<INgheBusiness, NgheBusiness>();
+            services.AddTransient<INgheRepository, NgheRepository>();
+            
             
 
             services.AddScoped<EasyStoreQuery>();
