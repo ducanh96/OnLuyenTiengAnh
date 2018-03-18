@@ -1,3 +1,4 @@
+using PracticeEnglish.Contracts.Request;
 using PracticeEnglish.Entity;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,8 @@ namespace PracticeEnglish.Business.Interface
     {
         Task<IEnumerable<DocEntity>> GetDSDoc_CauHoi(int maTopic);
         Task<string> GetParagraph(int idDeThi);
+        Task<int> Add(ThemDoanVanRequest r);
+        Task<int> Update(SuaDoanVanRequest r);
+        Task<bool> Delete(XoaDoanVanRequest r);
     }
 }

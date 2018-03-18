@@ -28,7 +28,8 @@ namespace PracticeEnglish.Controllers
         }
 
         // GET api/v1/category/{id}
-        [HttpGet("{idTopic}")]
+        //[HttpGet("{idTopic}")]
+        [HttpGet("KhongThuocDeThi/{idTopic}")]
         public async Task<CauHoiGetListResponse> GetListCauHoi_KhongThuocDeThi(GetListCauHoiRequest request)
         {
             return await _cauHoiBusiness.GetListCauHoi_KhongThuocDeThi(request);
@@ -55,5 +56,35 @@ namespace PracticeEnglish.Controllers
         }
 
 
+        [ProducesResponseType(201)]
+        [HttpPost]
+        public async Task<int> AddCauHoi([FromBody]ThemCauHoiRequest r)
+        {
+            return await _cauHoiBusiness.Add(r);
+        }
+        [ProducesResponseType(201)]
+        [HttpPut("UpdateCauHoi")]
+        public async Task<int> UpdateCauHoi([FromBody]SuaCauHoiRequest request)
+        {
+            return await _cauHoiBusiness.Update(request);
+        }
+        [ProducesResponseType(201)]
+        [HttpDelete("DeleteCauHoi")]
+        public async Task<bool> DeleteCauHoi([FromBody]XoaCauHoiRequest request)
+        {
+            return await _cauHoiBusiness.Delete(request);
+        }
+         [ProducesResponseType(201)]
+        [HttpDelete("DeleteCauHoiByIDDoc")]
+        public async Task<bool> DeleteCauHoiByIDDoc([FromBody]XoaCauHoiByIDDocRequest request)
+        {
+            return await _cauHoiBusiness.DeleteByIDDoc(request);
+        }
+         [ProducesResponseType(201)]
+        [HttpDelete("DeleteCauHoiByIDNghe")]
+        public async Task<bool> DeleteCauHoiByIDNghe([FromBody]XoaCauHoiByIDNgheRequest request)
+        {
+            return await _cauHoiBusiness.DeleteByIDNghe(request);
+        }
     }
 }

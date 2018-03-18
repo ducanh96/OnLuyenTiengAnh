@@ -25,7 +25,9 @@ namespace PracticeEnglish.Business.Implement
         public async Task<IEnumerable<NgheEntity>> GetDSNghe_CauHoi(int maTopic)
         {
             List<NgheEntity> list = new List<NgheEntity>();
-            var listNghe = await _ngheRepository.LayDSFileNghe(maTopic);
+            GetListFileNgheRequest r = new GetListFileNgheRequest();
+            r.idTopic=maTopic;
+            var listNghe = await _ngheRepository.LayDSFileNghe(r);
             foreach (var item in listNghe)
             {
                 var listCH = await _cauHoiRepository.GetListCauHoi_IDNghe(item.ID) as List<CauHoi>;
@@ -41,6 +43,18 @@ namespace PracticeEnglish.Business.Implement
         public async Task<string> GetMusic(int idDeThi)
         {
              return await _ngheRepository.GetMusic(idDeThi);
+        }
+        public async Task<int> Add(ThemFileNgheRequest r)
+        {
+           return await _ngheRepository.ThemFileNghe(r);
+        }
+        public async Task<int> Update(SuaFileNgheRequest r)
+        {
+           return await _ngheRepository.SuaFileNghe(r);
+        }
+        public async Task<bool> Delete(XoaFileNgheRequest r)
+        {
+           return await _ngheRepository.XoaFileNghe(r);
         }
     }
 }

@@ -42,5 +42,17 @@ namespace PracticeEnglish.Business.Implement
         {
             return await _docRepository.GetParagraph(idDeThi);
         }
+        public async Task<int> Add(ThemDoanVanRequest r)
+        {
+           return await _docRepository.ThemDoanVan(r);
+        }
+        public async Task<int> Update(SuaDoanVanRequest r)
+        {
+           return await _docRepository.SuaDoanVan(r);
+        }
+        public async Task<bool> Delete(XoaDoanVanRequest r)
+        {
+           return await _docRepository.XoaDoanVan(r);
+        }
     }
 }
