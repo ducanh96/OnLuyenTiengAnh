@@ -49,6 +49,12 @@ namespace PracticeEnglish.Controllers
         {
             return await _deThiBusiness.UpdateCauHoi_DeThi(request);
         }
-        
+
+        [HttpGet("Get/{idDeThi}")]
+        public async Task<GetDeThiByIdResponse> GetDeThiById(GetDeThiByIdRequest request)
+        {
+            return await _deThiBusiness.GetDeThiById(request);
+        }
+
     }
 }

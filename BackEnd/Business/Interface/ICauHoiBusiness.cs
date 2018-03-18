@@ -10,5 +10,6 @@ namespace PracticeEnglish.Business.Interface
     public interface ICauHoiBusiness
     {
        Task<CauHoiGetListResponse> GetListCauHoi_KhongThuocDeThi(GetListCauHoiRequest r);
+       Task<GetListCauHoi_DeThiResponse> GetListCauHoi_DeThi(GetListCauHoi_DeThiRequest r);
     }
 }

@@ -16,5 +16,8 @@ namespace PracticeEnglish.Data.Interface
         // Task<bool> XoaCauHoiByIdNghe(XoaCauHoiByIDNgheRequest r);
         Task<IEnumerable<CauHoi>> GetListCauHoi_KhongThuocDeThi(int idTopic);
         Task<IEnumerable<CauHoi>> GetListCauHoi_IDNghe(int idNghe);
+
+        Task<IEnumerable<CauHoi>> GetListCauHoi_IDDoc(int idDoc);
+        Task<IEnumerable<CauHoi>> GetListCauHoi_DeThi(int idDeThi);
     }
 }

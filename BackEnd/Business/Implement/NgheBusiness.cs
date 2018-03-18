@@ -37,5 +37,10 @@ namespace PracticeEnglish.Business.Implement
             }
             return list;
         }
+
+        public async Task<string> GetMusic(int idDeThi)
+        {
+             return await _ngheRepository.GetMusic(idDeThi);
+        }
     }
 }

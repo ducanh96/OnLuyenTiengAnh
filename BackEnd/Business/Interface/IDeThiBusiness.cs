@@ -13,6 +13,8 @@ namespace PracticeEnglish.Business.Interface
        Task<DeThiAddResponse> Add(DeThiAddRequest deThiRequest);
         Task<int> GetLastId(string table);
         Task<DeThiAddResponse> UpdateCauHoi_DeThi(UpdateCauHoi_DeThiRequest request);
+        Task<GetDeThiByIdResponse> GetDeThiById(GetDeThiByIdRequest request);
+
     }
 
 }

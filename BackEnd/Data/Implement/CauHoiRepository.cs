@@ -143,6 +143,7 @@ namespace PracticeEnglish.Data.Implement
             }
         }
 
+        //lay ds cau hoi theo ID nghe
         public async Task<IEnumerable<CauHoi>> GetListCauHoi_IDNghe(int idNghe)
         {
             using (IDbConnection dbConnection = _connection)
@@ -163,5 +164,49 @@ namespace PracticeEnglish.Data.Implement
                 return listCauHoi;
             }
         }
+
+        public async Task<IEnumerable<CauHoi>> GetListCauHoi_IDDoc(int idDoc)
+        {
+           using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"SELECT [ID]
+                                ,[TieuDe]
+                                ,[PhuongAnA]
+                                ,[PhuongAnB]
+                                ,[PhuongAnC]
+                                ,[PhuongAnD]
+                                ,[DapAn]
+                                ,[IDNghe]
+                                ,[IDDoc]
+                                ,[IDDeThi]
+                                ,[IDChuDe] FROM [dbo].[CauHoi] WHERE [IDDoc] = @IdDoc";
+
+                var listCauHoi = await dbConnection.QueryAsync<CauHoi>(query, new { @IdDoc = idDoc });
+                return listCauHoi;
+            }
+        }
+
+        public async Task<IEnumerable<CauHoi>> GetListCauHoi_DeThi(int idDeThi)
+        {
+            using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"SELECT [ID]
+                                ,[TieuDe]
+                                ,[PhuongAnA]
+                                ,[PhuongAnB]
+                                ,[PhuongAnC]
+                                ,[PhuongAnD]
+                                ,[DapAn]
+                                ,[IDNghe]
+                                ,[IDDoc]
+                                ,[IDDeThi]
+                                ,[IDChuDe] FROM [dbo].[CauHoi] WHERE [IDDeThi] = @IdDeThi";
+
+                var listCauHoi = await dbConnection.QueryAsync<CauHoi>(query, new { @IdDeThi = idDeThi });
+                return listCauHoi;
+            }
+        }
+
+       
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,44 +11,38 @@ using PracticeEnglish.Contracts.Response;
 
 namespace PracticeEnglish.Data.Implement
 {
-    public class NgheRepository : INgheRepository
+    public class DocRepository : IDocRepository
     {
         private readonly string _connectionString;
         private IDbConnection _connection { get { return new SqlConnection(_connectionString); } }
 
-        public NgheRepository()
+        public DocRepository()
         {
             // TODO: It will be refactored...
             _connectionString = ConfigSetting._connectionString;
         }
 
-
-
-
-
-        public async Task<IEnumerable<Nghe>> LayDSFileNghe(int idChuDe)
-        {
-            using (IDbConnection dbConnection = _connection)
-            {
-                string query = @"SELECT ID, FileNghe, IDChuDe FROM Nghe WHERE IDChuDe = @IDChuDe";
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@IDChuDe", idChuDe, DbType.Int16);
-                var nghe = await dbConnection.QueryAsync<Nghe>(query, param: parameters);
-                return nghe;
-            }
-
-
-        }
-
-        public async Task<string> GetMusic(int idDeThi)
+        public async Task<IEnumerable<Doc>> LayDSDoanVan(int idChuDe)
         {
              using (IDbConnection dbConnection = _connection)
             {
-                string query = @"select [FileNghe] from Nghe where [Id] = (select  Top 1 [IDNghe] from CauHoi where [IDDeThi] = @IdDeThi)";
+                string query = @"SELECT ID, DoanVan, IDChuDe FROM Doc WHERE IDChuDe = @IDChuDe";
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@IDChuDe", idChuDe, DbType.Int16);
+                var doc = await dbConnection.QueryAsync<Doc>(query, param: parameters);
+                return doc;
+            }
+        }
+
+        public async Task<string> GetParagraph(int idDeThi)
+        {
+              using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"select [DoanVan] from Doc where [Id] = (select  Top 1 [IDDoc] from CauHoi where [IDDeThi] = @IdDeThi)";
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@IdDeThi", idDeThi, DbType.Int16);
-                var doanNghe = await dbConnection.QueryFirstAsync<string>(query, param: parameters);
-                return doanNghe;
+                var doanVan = await dbConnection.QueryFirstAsync<string>(query, param: parameters);
+                return doanVan;
             }
         }
     }

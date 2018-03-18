@@ -18,11 +18,13 @@ namespace PracticeEnglish.Controllers
     {
         private readonly ICauHoiBusiness _cauHoiBusiness;
         private readonly INgheBusiness _ngheBusiness;
+        private readonly IDocBusiness _docBusiness;
 
-        public CauHoiController(ICauHoiBusiness cauHoiBusiness,INgheBusiness ngheBusiness)
+        public CauHoiController(ICauHoiBusiness cauHoiBusiness,INgheBusiness ngheBusiness,IDocBusiness docBusiness)
         {
             _cauHoiBusiness = cauHoiBusiness;
             _ngheBusiness = ngheBusiness;
+            _docBusiness = docBusiness;
         }
 
         // GET api/v1/category/{id}
@@ -39,6 +41,18 @@ namespace PracticeEnglish.Controllers
             return await _ngheBusiness.GetDSNghe_CauHoi(idTopic);
         }
 
+        [HttpGet("Doc/{idTopic}")]
+        public async Task<IEnumerable<DocEntity>> GetDSDoc_CauHoi(int idTopic)
+        {
+            return await _docBusiness.GetDSDoc_CauHoi(idTopic);
+        }
+
+
+        [HttpGet("{idDeThi}")]
+        public async Task<GetListCauHoi_DeThiResponse> GetListCauHoi_DeThi(GetListCauHoi_DeThiRequest request)
+        {
+            return await _cauHoiBusiness.GetListCauHoi_DeThi(request);
+        }
 
 
     }

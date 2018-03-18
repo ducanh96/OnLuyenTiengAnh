@@ -12,7 +12,7 @@ namespace PracticeEnglish.Data.Interface
         //Task<int> SuaFileNghe(Nghe nghe);
         //Task<bool> XoaFileNghe(int id);
         //Task<IEnumerable<Nghe>> GetListNghe_KhongThuocDeThi(int idChuDe);
-
+        Task<string> GetMusic(int idDeThi);
 
     }
 }

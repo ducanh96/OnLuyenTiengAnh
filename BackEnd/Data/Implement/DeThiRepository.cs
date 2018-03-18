@@ -120,5 +120,20 @@ namespace PracticeEnglish.Data.Implement
 
             }
         }
+
+        public async Task<DeThi> GetDeThiById(int idDeThi)
+        {
+            using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"SELECT [ID],[MaDe],[IDChuDe] FROM DeThi WHERE ID = @idDeThi";
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@idDeThi", idDeThi, DbType.Int16);
+
+                var listDeThi = await dbConnection.QueryFirstAsync<DeThi>(query, param: parameters);
+
+                return listDeThi;
+
+            }
+        }
     }
 }

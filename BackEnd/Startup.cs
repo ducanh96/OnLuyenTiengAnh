@@ -33,6 +33,7 @@ namespace PracticeEnglish
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             // Add framework services.
             services.AddMvc();
 
@@ -49,8 +50,8 @@ namespace PracticeEnglish
             services.AddTransient<ICauHoiBusiness, CauHoiBusiness>();
             services.AddTransient<INgheBusiness, NgheBusiness>();
             services.AddTransient<INgheRepository, NgheRepository>();
-            
-            
+            services.AddTransient<IDocRepository, DocRepository>();
+            services.AddTransient<IDocBusiness, DocBusiness>();
 
             services.AddScoped<EasyStoreQuery>();
             services.AddScoped<IDocumentExecuter, DocumentExecuter>();
@@ -68,6 +69,7 @@ namespace PracticeEnglish
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseCors( options => options.WithOrigins("http://localhost:57912").AllowAnyMethod() );
             loggerFactory.AddFile("C:/@Logs/aspnetcore-rest-api-with-dapper-{Date}.txt");
 
             app.UseMiddleware(typeof(GlobalExceptionMiddleware));

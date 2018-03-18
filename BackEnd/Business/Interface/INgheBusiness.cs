@@ -9,5 +9,6 @@ namespace PracticeEnglish.Business.Interface
     public interface INgheBusiness
     {
         Task<IEnumerable<NgheEntity>> GetDSNghe_CauHoi(int maTopic);
+        Task<string> GetMusic(int idDeThi);
     }
 }
