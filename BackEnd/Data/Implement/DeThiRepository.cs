@@ -27,10 +27,11 @@ namespace PracticeEnglish.Data.Implement
 
             using (IDbConnection dbConnection = _connection)
             {
+                string query = @"SELECT ID, maDe,IDChuDe from DeThi where IDChuDe = @IdTopic";
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@IdTopic", id, DbType.Int16);
-                var listDeThi = await dbConnection.QueryAsync<DeThi>(Constants.DeThi_GetListByTopic, param: parameters,
-         commandType: CommandType.StoredProcedure);
+
+                var listDeThi = await dbConnection.QueryAsync<DeThi>(query, param: parameters);
 
                 return listDeThi;
 
@@ -115,6 +116,21 @@ namespace PracticeEnglish.Data.Implement
                 parameters.Add("@tenBang", table, DbType.String);
 
                 var listDeThi = await dbConnection.QueryFirstAsync<int>(query, param: parameters);
+
+                return listDeThi;
+
+            }
+        }
+
+        public async Task<DeThi> GetDeThiById(int idDeThi)
+        {
+            using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"SELECT [ID],[MaDe],[IDChuDe] FROM DeThi WHERE ID = @idDeThi";
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@idDeThi", idDeThi, DbType.Int16);
+
+                var listDeThi = await dbConnection.QueryFirstAsync<DeThi>(query, param: parameters);
 
                 return listDeThi;
 

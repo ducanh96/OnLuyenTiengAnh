@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,12 +25,10 @@ namespace PracticeEnglish.Business.Implement
         public async Task<IEnumerable<DocEntity>> GetDSDoc_CauHoi(int maTopic)
         {
             List<DocEntity> list = new List<DocEntity>();
-            GetListDoanVanRequest r = new GetListDoanVanRequest();
-            r.idTopic=maTopic;
-            var listNghe = await _docRepository.LayDSDoanVan(r);
-            foreach (var item in listNghe)
+            var listDoc = await _docRepository.LayDSDoanVan(maTopic);
+            foreach (var item in listDoc)
             {
-                var listCH = await _cauHoiRepository.GetListCauHoi_IDNghe(item.ID) as List<CauHoi>;
+                var listCH = await _cauHoiRepository.GetListCauHoi_IDDoc(item.ID) as List<CauHoi>;
                 list.Add(new DocEntity
                 {
                     doc = item,
@@ -39,11 +37,16 @@ namespace PracticeEnglish.Business.Implement
             }
             return list;
         }
-        public async Task<int> Add(ThemDoanVanRequest r)
+
+        public async Task<string> GetParagraph(int idDeThi)
+        {
+            return await _docRepository.GetParagraph(idDeThi);
+        }
+        public async Task<AddResponse> Add(ThemDoanVanRequest r)
         {
            return await _docRepository.ThemDoanVan(r);
         }
-        public async Task<int> Update(SuaDoanVanRequest r)
+        public async Task<AddResponse> Update(SuaDoanVanRequest r)
         {
            return await _docRepository.SuaDoanVan(r);
         }

@@ -28,7 +28,8 @@ namespace PracticeEnglish.Controllers
         }
 
         // GET api/v1/category/{id}
-        [HttpGet("{idTopic}")]
+        //[HttpGet("{idTopic}")]
+        [HttpGet("KhongThuocDeThi/{idTopic}")]
         public async Task<CauHoiGetListResponse> GetListCauHoi_KhongThuocDeThi(GetListCauHoiRequest request)
         {
             return await _cauHoiBusiness.GetListCauHoi_KhongThuocDeThi(request);
@@ -51,15 +52,24 @@ namespace PracticeEnglish.Controllers
         {
             return await _docBusiness.GetDSDoc_CauHoi(idTopic);
         }
+
+
+        [HttpGet("{idDeThi}")]
+        public async Task<GetListCauHoi_DeThiResponse> GetListCauHoi_DeThi(GetListCauHoi_DeThiRequest request)
+        {
+            return await _cauHoiBusiness.GetListCauHoi_DeThi(request);
+        }
+
+
         [ProducesResponseType(201)]
         [HttpPost]
-        public async Task<int> AddCauHoi([FromBody]ThemCauHoiRequest r)
+        public async Task<AddResponse> AddCauHoi([FromBody]ThemCauHoiRequest r)
         {
             return await _cauHoiBusiness.Add(r);
         }
         [ProducesResponseType(201)]
         [HttpPut("UpdateCauHoi")]
-        public async Task<int> UpdateCauHoi([FromBody]SuaCauHoiRequest request)
+        public async Task<AddResponse> UpdateCauHoi([FromBody]SuaCauHoiRequest request)
         {
             return await _cauHoiBusiness.Update(request);
         }

@@ -10,7 +10,7 @@ using PracticeEnglish.Data.Interface;
 using PracticeEnglish;
 
 using PracticeEnglish.Contracts.Request;
-
+using PracticeEnglish.Contracts.Response;
 
 namespace PracticeEnglish.Data.Implement
 {
@@ -37,28 +37,59 @@ namespace PracticeEnglish.Data.Implement
             }
         }
 
-        public async Task<int> ThemFileNghe(ThemFileNgheRequest r)
+        public async Task<AddResponse> ThemFileNghe(ThemFileNgheRequest r)
         {
-           using (IDbConnection dbConnection = _connection)
+            try
             {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@FileNghe", r.FileNghe ,DbType.String);
-                parameters.Add("@IDChuDe", r.IDChuDe ,DbType.String);
-                var listCauHoi = await dbConnection.ExecuteAsync(Constants.Nghe_Them , param: parameters, commandType: CommandType.StoredProcedure);
-                return listCauHoi;
+                using (IDbConnection dbConnection = _connection)
+                {
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("@FileNghe", r.FileNghe, DbType.String);
+                    parameters.Add("@IDChuDe", r.IDChuDe, DbType.String);
+                    var listCauHoi = await dbConnection.ExecuteAsync(Constants.Nghe_Them, param: parameters, commandType: CommandType.StoredProcedure);
+                    
+                    string query = @"SELECT  top 1 ID from Nghe ";
+                    return new AddResponse
+                    {
+                        Code =  await dbConnection.QueryFirstAsync<int>(query, param: parameters)
+                    };
+                }
             }
+            catch (Exception ex)
+            {
+                return new AddResponse
+                {
+                    Code = 0,
+                    Message = ex.Message
+                };
+            }
+          
         }
 
-        public async Task<int> SuaFileNghe(SuaFileNgheRequest r)
+        public async Task<AddResponse> SuaFileNghe(SuaFileNgheRequest r)
         {
-            using (IDbConnection dbConnection = _connection)
+            try
             {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@FileNghe", r.FileNghe ,DbType.String);
-                parameters.Add("@IDChuDe", r.IDChuDe ,DbType.String);
-                parameters.Add("@ID", r.ID ,DbType.String);
-                var listCauHoi = await dbConnection.ExecuteAsync(Constants.Nghe_Sua , param: parameters, commandType: CommandType.StoredProcedure);
-                return listCauHoi;
+                using (IDbConnection dbConnection = _connection)
+                {
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("@FileNghe", r.FileNghe, DbType.String);
+                    parameters.Add("@IDChuDe", r.IDChuDe, DbType.String);
+                    parameters.Add("@ID", r.ID, DbType.String);
+                    var listCauHoi = await dbConnection.ExecuteAsync(Constants.Nghe_Sua, param: parameters, commandType: CommandType.StoredProcedure);
+                    return new AddResponse
+                    {
+                        Code = 1
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new AddResponse
+                {
+                    Code = 0,
+                    Message = ex.Message
+                };
             }
         }
 
@@ -70,6 +101,18 @@ namespace PracticeEnglish.Data.Implement
                 parameters.Add("@ID", r.ID ,DbType.Int32);
                 int listCauHoi = await dbConnection.ExecuteAsync(Constants.Nghe_Xoa , param: parameters, commandType: CommandType.StoredProcedure);
                 return  (listCauHoi>0 ? true: false )  ;
+            }
+        }
+
+        public async Task<string> GetMusic(int idDeThi)
+        {
+             using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"select [FileNghe] from Nghe where [Id] = (select  Top 1 [IDNghe] from CauHoi where [IDDeThi] = @IdDeThi)";
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@IdDeThi", idDeThi, DbType.Int16);
+                var doanNghe = await dbConnection.QueryFirstAsync<string>(query, param: parameters);
+                return doanNghe;
             }
         }
     }

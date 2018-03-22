@@ -47,5 +47,12 @@ namespace PracticeEnglish.Business.Implement
         {
             return await _deThiRepository.UpdateCauHoi_DeThi(request.IDCauHoi,request.IDDeThi);
         }
+
+        public async Task<GetDeThiByIdResponse> GetDeThiById(GetDeThiByIdRequest request)
+        {
+            GetDeThiByIdResponse response = new GetDeThiByIdResponse();
+            response.deThi = await _deThiRepository.GetDeThiById(request.idDeThi);
+            return response;
+        }
     }
 }

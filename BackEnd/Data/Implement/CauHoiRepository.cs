@@ -8,6 +8,7 @@ using Dapper;
 using PracticeEnglish.Data.Interface;
 using PracticeEnglish;
 using PracticeEnglish.Contracts.Request;
+using PracticeEnglish.Contracts.Response;
 
 namespace PracticeEnglish.Data.Implement
 {
@@ -48,44 +49,73 @@ namespace PracticeEnglish.Data.Implement
             }
         }
 
-        public async Task<int> ThemCauHoi(ThemCauHoiRequest r)
+        public async Task<AddResponse> ThemCauHoi(ThemCauHoiRequest r)
         {
-            using (IDbConnection dbConnection = _connection)
+            try
             {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@PhuongAnA", r.PhuongAnA ,DbType.String);
-                parameters.Add("@PhuongAnB", r.PhuongAnB ,DbType.String);
-                parameters.Add("@PhuongAnC", r.PhuongAnC ,DbType.String);
-                parameters.Add("@PhuongAnD", r.PhuongAnD ,DbType.String);
-                parameters.Add("@TieuDe", r.TieuDe ,DbType.String);
-                parameters.Add("@DapAn", r.DapAn ,DbType.String);
-                parameters.Add("@IDNghe ", r.IDNghe ,DbType.Int32);
-                parameters.Add("@IDDoc", r.IDDoc ,DbType.Int32);
-                parameters.Add("@IDDethi", r.IDDethi ,DbType.Int32);
-                parameters.Add("@IDChuDe", r.IDChuDe ,DbType.Int32);
-                var listCauHoi = await dbConnection.ExecuteAsync(Constants.CauHoi_Them , param: parameters, commandType: CommandType.StoredProcedure);
-                return listCauHoi;
+                using (IDbConnection dbConnection = _connection)
+                {
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("@PhuongAnA", r.PhuongAnA, DbType.String);
+                    parameters.Add("@PhuongAnB", r.PhuongAnB, DbType.String);
+                    parameters.Add("@PhuongAnC", r.PhuongAnC, DbType.String);
+                    parameters.Add("@PhuongAnD", r.PhuongAnD, DbType.String);
+                    parameters.Add("@TieuDe", r.TieuDe, DbType.String);
+                    parameters.Add("@DapAn", r.DapAn, DbType.String);
+                    parameters.Add("@IDNghe ", r.IDNghe, DbType.Int32);
+                    parameters.Add("@IDDoc", r.IDDoc, DbType.Int32);
+                    parameters.Add("@IDDethi", r.IDDethi, DbType.Int32);
+                    parameters.Add("@IDChuDe", r.IDChuDe, DbType.Int32);
+                    await dbConnection.ExecuteAsync(Constants.CauHoi_Them, param: parameters, commandType: CommandType.StoredProcedure);
+                     return new AddResponse
+                    {
+                        Code = 1
+                    };
+                }
             }
+            catch (Exception ex)
+            {
+                return new AddResponse
+                {
+                    Code = 0,
+                    Message = ex.Message
+                };
+            }
+            
         }
 
-        public async Task<int> SuaCauHoi(SuaCauHoiRequest r)
+        public async Task<AddResponse> SuaCauHoi(SuaCauHoiRequest r)
         {
-           using (IDbConnection dbConnection = _connection)
+            try
             {
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("@ID", r.ID ,DbType.Int32);
-                parameters.Add("@PhuongAnA", r.PhuongAnA ,DbType.String);
-                parameters.Add("@PhuongAnB", r.PhuongAnB ,DbType.String);
-                parameters.Add("@PhuongAnC", r.PhuongAnC ,DbType.String);
-                parameters.Add("@PhuongAnD", r.PhuongAnD ,DbType.String);
-                parameters.Add("@TieuDe", r.TieuDe ,DbType.String);
-                parameters.Add("@DapAn", r.DapAn ,DbType.String);
-                parameters.Add("@IDNghe ", r.IDNghe ,DbType.Int32);
-                parameters.Add("@IDDoc", r.IDDoc ,DbType.Int32);
-                parameters.Add("@IDDethi", r.IDDethi ,DbType.Int32);
-                parameters.Add("@IDChuDe", r.IDChuDe ,DbType.Int32);
-                var listCauHoi = await dbConnection.ExecuteAsync(Constants.CauHoi_Sua , param: parameters, commandType: CommandType.StoredProcedure);
-                return listCauHoi;
+                using (IDbConnection dbConnection = _connection)
+                {
+                    DynamicParameters parameters = new DynamicParameters();
+                    parameters.Add("@ID", r.ID, DbType.Int32);
+                    parameters.Add("@PhuongAnA", r.PhuongAnA, DbType.String);
+                    parameters.Add("@PhuongAnB", r.PhuongAnB, DbType.String);
+                    parameters.Add("@PhuongAnC", r.PhuongAnC, DbType.String);
+                    parameters.Add("@PhuongAnD", r.PhuongAnD, DbType.String);
+                    parameters.Add("@TieuDe", r.TieuDe, DbType.String);
+                    parameters.Add("@DapAn", r.DapAn, DbType.String);
+                    parameters.Add("@IDNghe ", r.IDNghe, DbType.Int32);
+                    parameters.Add("@IDDoc", r.IDDoc, DbType.Int32);
+                    parameters.Add("@IDDethi", r.IDDethi, DbType.Int32);
+                    parameters.Add("@IDChuDe", r.IDChuDe, DbType.Int32);
+                    await dbConnection.ExecuteAsync(Constants.CauHoi_Sua, param: parameters, commandType: CommandType.StoredProcedure);
+                    return new AddResponse
+                    {
+                        Code = 1
+                    };
+                }
+            }
+          catch (Exception ex)
+            {
+                return new AddResponse
+                {
+                    Code = 0,
+                    Message = ex.Message
+                };
             }
         }
 
@@ -143,6 +173,7 @@ namespace PracticeEnglish.Data.Implement
             }
         }
 
+        //lay ds cau hoi theo ID nghe
         public async Task<IEnumerable<CauHoi>> GetListCauHoi_IDNghe(int idNghe)
         {
             using (IDbConnection dbConnection = _connection)
@@ -163,5 +194,49 @@ namespace PracticeEnglish.Data.Implement
                 return listCauHoi;
             }
         }
+
+        public async Task<IEnumerable<CauHoi>> GetListCauHoi_IDDoc(int idDoc)
+        {
+           using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"SELECT [ID]
+                                ,[TieuDe]
+                                ,[PhuongAnA]
+                                ,[PhuongAnB]
+                                ,[PhuongAnC]
+                                ,[PhuongAnD]
+                                ,[DapAn]
+                                ,[IDNghe]
+                                ,[IDDoc]
+                                ,[IDDeThi]
+                                ,[IDChuDe] FROM [dbo].[CauHoi] WHERE [IDDoc] = @IdDoc";
+
+                var listCauHoi = await dbConnection.QueryAsync<CauHoi>(query, new { @IdDoc = idDoc });
+                return listCauHoi;
+            }
+        }
+
+        public async Task<IEnumerable<CauHoi>> GetListCauHoi_DeThi(int idDeThi)
+        {
+            using (IDbConnection dbConnection = _connection)
+            {
+                string query = @"SELECT [ID]
+                                ,[TieuDe]
+                                ,[PhuongAnA]
+                                ,[PhuongAnB]
+                                ,[PhuongAnC]
+                                ,[PhuongAnD]
+                                ,[DapAn]
+                                ,[IDNghe]
+                                ,[IDDoc]
+                                ,[IDDeThi]
+                                ,[IDChuDe] FROM [dbo].[CauHoi] WHERE [IDDeThi] = @IdDeThi";
+
+                var listCauHoi = await dbConnection.QueryAsync<CauHoi>(query, new { @IdDeThi = idDeThi });
+                return listCauHoi;
+            }
+        }
+
+       
     }
 }

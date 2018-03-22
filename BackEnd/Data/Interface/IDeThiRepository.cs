@@ -12,5 +12,6 @@ namespace PracticeEnglish.Data.Interface
         Task<DeThiAddResponse> Add(DeThi deThi);
         Task<int> GetLastId(string table);
         Task<DeThiAddResponse> UpdateCauHoi_DeThi(int idCauHoi, int idDeThi);
+        Task<DeThi> GetDeThiById(int idDeThi);
     }
 }

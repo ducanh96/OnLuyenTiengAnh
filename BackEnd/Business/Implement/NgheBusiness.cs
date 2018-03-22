@@ -39,11 +39,16 @@ namespace PracticeEnglish.Business.Implement
             }
             return list;
         }
-        public async Task<int> Add(ThemFileNgheRequest r)
+
+        public async Task<string> GetMusic(int idDeThi)
+        {
+             return await _ngheRepository.GetMusic(idDeThi);
+        }
+        public async Task<AddResponse> Add(ThemFileNgheRequest r)
         {
            return await _ngheRepository.ThemFileNghe(r);
         }
-        public async Task<int> Update(SuaFileNgheRequest r)
+        public async Task<AddResponse> Update(SuaFileNgheRequest r)
         {
            return await _ngheRepository.SuaFileNghe(r);
         }
